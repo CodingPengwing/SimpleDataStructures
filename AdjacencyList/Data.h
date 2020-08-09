@@ -11,7 +11,7 @@
 #define DATA_H
 
 // If you change Data definition, you *have to* change data_Create(),
-// data_Free(), data_Print() and data_Compare function()
+// data_Free(), data_Print() and data_Compare() functions
 typedef struct data Data_t;
 struct data {
     int x;

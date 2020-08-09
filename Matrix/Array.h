@@ -13,19 +13,19 @@
 #ifndef ARRAY_H
 #define ARRAY_H
 
-typedef Data_t * DataArray_t;
+typedef Data_t * Array_t;
 
 // Make a new Array of specifed size
-DataArray_t
+Array_t
 array_Create(size_t size) 
 {
-    DataArray_t array = (DataArray_t) malloc(size * sizeof(*array));
+    Array_t array = (Array_t) malloc(size * sizeof(*array));
     return array;
 }
 
 // Free an Array
 void 
-array_Free(DataArray_t array, size_t size)
+array_Free(Array_t array, size_t size)
 {
     for (size_t i = 0; i < size; i++) 
         data_Free(&array[i]);
@@ -34,7 +34,7 @@ array_Free(DataArray_t array, size_t size)
 
 // Print the Array - [x_0, x_1, ... x_n-1]
 void 
-array_Print(DataArray_t array, size_t size)
+array_Print(Array_t array, size_t size)
 {
     printf("[");
     for (size_t i = 0; i < size; i++)
@@ -48,7 +48,7 @@ array_Print(DataArray_t array, size_t size)
 
 // Sort an Array
 void 
-array_Sort(DataArray_t array, size_t size)
+array_Sort(Array_t array, size_t size)
 {
     qsort(array, size, sizeof(*array), data_Compare);
 }

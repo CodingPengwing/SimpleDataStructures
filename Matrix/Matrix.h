@@ -11,19 +11,19 @@
 #ifndef MATRIX_H
 #define MATRIX_H
 
-typedef DataArray_t * DataMatrix_t;
+typedef Array_t * Matrix_t;
 
-DataMatrix_t 
+Matrix_t 
 matrix_Create(size_t rows, size_t columns)
 {
-    DataMatrix_t matrix = (DataMatrix_t) malloc(rows * sizeof(*matrix));
+    Matrix_t matrix = (Matrix_t) malloc(rows * sizeof(*matrix));
     for (size_t i = 0; i < rows; i++)
         matrix[i] = array_Create(columns);        
     return matrix;
 }
 
 void 
-matrix_Free(DataMatrix_t matrix, size_t rows, size_t columns)
+matrix_Free(Matrix_t matrix, size_t rows, size_t columns)
 {
     for (size_t i = 0; i < rows; i++)
         array_Free(matrix[i], columns);
@@ -31,7 +31,7 @@ matrix_Free(DataMatrix_t matrix, size_t rows, size_t columns)
 }
 
 void 
-matrix_Print(DataMatrix_t matrix, size_t rows, size_t columns)
+matrix_Print(Matrix_t matrix, size_t rows, size_t columns)
 {
     for (size_t i = 0; i < rows; i++)
         array_Print(matrix[i], columns);

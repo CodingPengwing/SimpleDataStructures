@@ -6,7 +6,7 @@
 int main(int argc, char const *argv[])
 {
     int size = 10;
-    DataArray_t array = array_Create(size);
+    Array_t array = array_Create(size);
     
     int i;
     for (i = 0; i < size/2; i++)

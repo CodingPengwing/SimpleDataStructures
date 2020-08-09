@@ -11,15 +11,15 @@
 #ifndef DATA_H
 #define DATA_H
 
-// typedef struct data Data_t; to create some abstract data type
-// If you change data type, you have to change data_Create(),
+// If you change Data definition, you *have to* change data_Create(),
 // data_Free(), data_Print() and data_Compare function()
-typedef struct data {
+typedef struct data Data_t;
+struct data {
     int x;
     int y;
     int z;
     char *string;
-} Data_t;
+};
 
 
 //  Create a new piece of Data

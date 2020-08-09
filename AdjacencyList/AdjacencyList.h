@@ -1,3 +1,7 @@
+/*  An implementation of an Adjacency List structure.
+    Uses the Lists defined in "List.h" to make 
+    Arrays of Lists - which are Adjacency Lists.
+*/
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -10,56 +14,58 @@
 #ifndef ADJACENCYLIST_H
 #define ADJACENCYLIST_H
 
+// Giving an array of Lists (technically pointers to lists) 
+// the name Adjacency List - which is exactly what it is.
 typedef List_t ** AdjacencyList_t;
 
+// Make a new Adjacency List
 AdjacencyList_t adjacencyList_Create(size_t length)
 {
-    AdjacencyList_t adj_list = (AdjacencyList_t) malloc(length * sizeof(*adj_list));
+    AdjacencyList_t adjList = (AdjacencyList_t) malloc(length * sizeof(*adjList));
     for (size_t i = 0; i < length; i++) 
-        adj_list[i] = list_Create();    
-    return adj_list;
+        adjList[i] = list_Create();    
+    return adjList;
 }
 
-
-void adjacencyList_Free(AdjacencyList_t adj_list, size_t length)
+// Free an Adjacency List
+void adjacencyList_Free(AdjacencyList_t adjList, size_t length)
 {
     for (size_t i = 0; i < length; i++) 
-        list_Free(adj_list[i]);
-    free(adj_list);
+        list_Free(adjList[i]);
+    free(adjList);
 }
 
-
-void adjacencyList_Print(AdjacencyList_t adj_list, size_t length)
+// Print an Adjacency List
+void adjacencyList_Print(AdjacencyList_t adjList, size_t length)
 {
     printf("$\n");
     for (size_t i = 0; i < length; i++) 
-        list_Print(adj_list[i]);
+        list_Print(adjList[i]);
     printf("$\n");
 }
 
-
-void adjacencyList_InsertFront(AdjacencyList_t adj_list, int list_index, Data_t *data)
+// Insert a Data into the first position of the index-specified List
+void adjacencyList_InsertFront(AdjacencyList_t adjList, int list_index, Data_t *data)
 {
-    list_InsertTop(adj_list[list_index], data);
+    list_InsertTop(adjList[list_index], data);
 }
 
-
-void adjacencyList_InsertBack(AdjacencyList_t adj_list, int list_index, Data_t *data)
+// Insert a Data into the last position of the index-specified List
+void adjacencyList_InsertBack(AdjacencyList_t adjList, int list_index, Data_t *data)
 {
-    list_InsertBottom(adj_list[list_index], data);
+    list_InsertBottom(adjList[list_index], data);
 }
 
-
-void adjacencyList_RemoveFront(AdjacencyList_t adj_list, int list_index)
+// Remove a Data from the first position of the index-specified List
+void adjacencyList_RemoveFront(AdjacencyList_t adjList, int list_index)
 {
-    list_RemoveTop(adj_list[list_index]);
+    list_RemoveTop(adjList[list_index]);
 }
 
-
-void adjacencyList_RemoveBack(AdjacencyList_t adj_list, int list_index)
+// Remove a Data from the last position of the index-specified List
+void adjacencyList_RemoveBack(AdjacencyList_t adjList, int list_index)
 {
-    list_RemoveBottom(adj_list[list_index]);
+    list_RemoveBottom(adjList[list_index]);
 }
-
 
 #endif

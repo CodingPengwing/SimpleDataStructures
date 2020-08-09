@@ -27,7 +27,6 @@ node_Create(Data_t *data)
     return node;
 }
 
-
 // Free the memory associated with a Node
 void 
 node_Free(Node_t *node) 
@@ -35,7 +34,6 @@ node_Free(Node_t *node)
     if (node->data) data_Free(node->data);
     free(node);
 }
-
 
 void 
 node_Swap_Positions(Node_t *node_1, Node_t *node_2)
@@ -46,4 +44,3 @@ node_Swap_Positions(Node_t *node_1, Node_t *node_2)
 }
 
 #endif
-

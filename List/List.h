@@ -11,10 +11,8 @@
 #include "Node.h"
 #include "util.h"
 
-
 #ifndef LIST_H
 #define LIST_H
-
 
 typedef struct linked_list List_t;
 struct linked_list 
@@ -23,7 +21,6 @@ struct linked_list
     Node_t *bottom;
     int size;
 };
-
 
 // Create a new empty List and return a pointer to it
 List_t 
@@ -38,8 +35,6 @@ List_t
 
     return list;
 }
-
-
 
 // Print the List - [x_1, x_2, ..., x_n]
 void 
@@ -56,8 +51,6 @@ list_Print(List_t *list)
     }
     printf("]\n");
 }
-
-
 
 // Recalculate the number of elements in a List
 int 
@@ -76,8 +69,6 @@ list_Size(List_t *list)
     return list->size;
 }
 
-
-
 // Add an element to the top of a List
 void 
 list_InsertTop(List_t *list, Data_t *data) 
@@ -95,8 +86,6 @@ list_InsertTop(List_t *list, Data_t *data)
     list->size++;
 }
 
-
-
 // Add an element to the bottom of a List
 void 
 list_InsertBottom(List_t *list, Data_t *data) 
@@ -113,8 +102,6 @@ list_InsertBottom(List_t *list, Data_t *data)
 
     list->size++;
 }
-
-
 
 // Remove and return the top element from a List
 Data_t *
@@ -143,8 +130,6 @@ list_RemoveTop(List_t *list)
     return data;
 }
 
-
-
 // Remove and return the bottom element from a List
 Data_t *
 list_RemoveBottom(List_t *list) 
@@ -171,7 +156,6 @@ list_RemoveBottom(List_t *list)
     free(old_bottom);
     return data;
 }
-
 
 // Remove specified Node from the List
 Data_t *
@@ -201,8 +185,6 @@ list_RemoveCustom(List_t *list, Node_t *node)
     return data;
 }
 
-
-
 // Free the memory associated with a List
 void 
 list_Free(List_t *list) 
@@ -214,7 +196,6 @@ list_Free(List_t *list)
     }
     free(list);
 }
-
 
 // Reverse the List
 void 
@@ -239,7 +220,6 @@ list_Reverse(List_t *list)
     list->top = list->bottom;
     list->bottom = tmp;
 }
-
 
 // Move all values that are bigger than the pivot to the bottom of the List
 void 
@@ -304,7 +284,6 @@ list_Sort(List_t *list)
         current = current->next;
     }
 }
-
 
 // Check to see if List contains this Data
 bool 

@@ -1,4 +1,6 @@
-/*  An implementation of a 2d Array structure
+/*  An implementation of a 2d Array structure.
+    Uses the Arrays defined in "Array.h" to 
+    make Arrays of Arrays - a Matrix.
 */
 
 #include <stdlib.h>

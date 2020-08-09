@@ -11,15 +11,15 @@ main.o: main.c $(HEADER_FILES)
 	gcc $(CFLAGS) -c main.c
 
 
-# This .PHONY command declares the "clean" rule as a phony one, i.e., it means
-# that the clean rule will run instructions but it wont create a file called
-# "clean" like a normal rule would (e.g., the poly_print.o rule results in a file
-# called poly_print.o being created).
-.PHONY: clean
-
+# This .PHONY command declares the "clean" and "run" rules as a phony one, 
+# i.e., it means that the rules will run instructions but it wont create a
+# file called "clean" or "run" like a normal rule would (e.g., the main.o 
+# rule results in a file called main.o being created).
+.PHONY: run
 run:
 	./test
 
+.PHONY: clean
 clean:
 	rm *.o
 	rm test

@@ -23,8 +23,8 @@ struct linked_list
 };
 
 // Create a new empty List and return a pointer to it
-List_t 
-*list_Create() 
+List_t *
+list_Create() 
 {
     List_t *list = (List_t *) malloc(sizeof(*list));
     assert(list);

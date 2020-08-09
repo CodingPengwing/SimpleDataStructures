@@ -38,10 +38,8 @@ void adjacencyList_Free(AdjacencyList_t adjList, size_t length)
 // Print an Adjacency List
 void adjacencyList_Print(AdjacencyList_t adjList, size_t length)
 {
-    printf("$\n");
     for (size_t i = 0; i < length; i++) 
         list_Print(adjList[i]);
-    printf("$\n");
 }
 
 // Insert a Data into the first position of the index-specified List

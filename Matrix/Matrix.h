@@ -8,35 +8,33 @@
 #include "Array.h"
 #include "Data.h"
 
-#ifndef GRID_H
-#define GRID_H
+#ifndef MATRIX_H
+#define MATRIX_H
 
 typedef DataArray_t * DataMatrix_t;
 
 DataMatrix_t 
-grid_Create(size_t rows, size_t columns)
+matrix_Create(size_t rows, size_t columns)
 {
-    DataMatrix_t grid = (DataMatrix_t) malloc(rows * sizeof(*grid));
+    DataMatrix_t matrix = (DataMatrix_t) malloc(rows * sizeof(*matrix));
     for (size_t i = 0; i < rows; i++)
-        grid[i] = array_Create(columns);        
-    return grid;
+        matrix[i] = array_Create(columns);        
+    return matrix;
 }
 
 void 
-grid_Free(DataMatrix_t grid, size_t rows, size_t columns)
+matrix_Free(DataMatrix_t matrix, size_t rows, size_t columns)
 {
     for (size_t i = 0; i < rows; i++)
-        array_Free(grid[i], columns);
-    free(grid);
+        array_Free(matrix[i], columns);
+    free(matrix);
 }
 
 void 
-grid_Print(DataMatrix_t grid, size_t rows, size_t columns)
+matrix_Print(DataMatrix_t matrix, size_t rows, size_t columns)
 {
-    printf("#\n");
     for (size_t i = 0; i < rows; i++)
-        array_Print(grid[i], columns);
-    printf("#\n");
+        array_Print(matrix[i], columns);
 }
 
 #endif

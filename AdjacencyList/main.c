@@ -17,6 +17,7 @@ int main(int argc, char const *argv[])
         Data_t *data = data_Create(i, i*10, i*20, strings[i%10]);
         adjacencyList_InsertBack(adjList, i%size, data);
     }
+    printf("Ta da! Here's the adjacency list:\n");
     adjacencyList_Print(adjList, size);
     adjacencyList_Free(adjList, size);
     

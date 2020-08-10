@@ -10,7 +10,7 @@ int main(int argc, char const *argv[])
     
     int i;
     for (i = 0; i < size/2; i++)
-        array[i] = *data_Create(0, 0, 0, "Woah cool code");
+        array[i] = *data_Create(0, 0, 0, "Cool code!");
     
     for (i = size/2; i < size; i++)
         array[i] = *data_Create(0, 0, 0, NULL);

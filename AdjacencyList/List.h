@@ -23,16 +23,14 @@ struct linked_list
 };
 
 // Create a new empty List and return a pointer to it
-List_t *
-list_Create() 
+List_t 
+*list_Create() 
 {
     List_t *list = (List_t *) malloc(sizeof(*list));
     assert(list);
-
     list->top = NULL;
     list->bottom = NULL;
     list->size = 0;
-
     return list;
 }
 
@@ -46,7 +44,8 @@ list_Print(List_t *list)
     {
         data_Print(current->data);
         // Print a comma unless we just printed the final element
-        if (current != list->bottom) printf(", ");
+        if (current != list->bottom) 
+            printf(", ");
         current = current->next;
     }
     printf("]\n");
@@ -58,13 +57,11 @@ list_Size(List_t *list)
 {
     Node_t *current = list->top;
     int counter = 0;
-
     while (current) 
     {
         counter++;
         current = current->next;
     }
-
     list->size = counter;
     return list->size;
 }
@@ -74,15 +71,15 @@ void
 list_InsertTop(List_t *list, Data_t *data) 
 {
     Node_t *node = node_Create(data);
-    
     if(list->size) 
     {
         node->next = list->top;
         list->top->prev = node;
         list->top = node;
     } 
-    else list->top = list->bottom = node;
-    
+    else 
+        list->top = list->bottom = node;
+
     list->size++;
 }
 
@@ -98,7 +95,8 @@ list_InsertBottom(List_t *list, Data_t *data)
         list->bottom->next = node;
         list->bottom = node;
     } 
-    else list->top = list->bottom = node;
+    else 
+        list->top = list->bottom = node;
 
     list->size++;
 }
@@ -108,10 +106,8 @@ Data_t *
 list_RemoveTop(List_t *list) 
 {
     if (list->size == 0) 
-    {
         exit_with_error("can't remove from empty list");
-    }
-
+    
     Data_t *data = list->top->data;
     Node_t *old_top = list->top;
 
@@ -120,10 +116,10 @@ list_RemoveTop(List_t *list)
         list->top = list->top->next;
         list->top->prev = NULL;
     }
-    else list->top = list->bottom = NULL;
+    else 
+        list->top = list->bottom = NULL;
     
     list->size--;
-    
     // free old_top but not its Data
     old_top->data = NULL;
     free(old_top);
@@ -135,10 +131,8 @@ Data_t *
 list_RemoveBottom(List_t *list) 
 {
     if (list->size == 0) 
-    {
         exit_with_error("can't remove from empty list");
-    }
-
+    
     Data_t *data = list->bottom->data;
     Node_t *old_bottom = list->bottom;
 
@@ -147,10 +141,10 @@ list_RemoveBottom(List_t *list)
         list->bottom = list->bottom->prev;
         list->bottom->next = NULL;
     }
-    else list->top = list->bottom = NULL;
+    else 
+        list->top = list->bottom = NULL;
 
     list->size--;
-
     // free old_bottom but not its Data
     old_bottom->data = NULL;
     free(old_bottom);
@@ -162,17 +156,16 @@ Data_t *
 list_RemoveCustom(List_t *list, Node_t *node) 
 {
     if (list->size == 0) 
-    {
         exit_with_error("can't remove from empty list");
-    }
-
+    
     // If Node is at the bottom or top of the List then  
     // use remove functions already provided
-    if (!node->prev) return list_RemoveTop(list);
-    if (!node->next) return list_RemoveBottom(list);
+    if (!node->prev) 
+        return list_RemoveTop(list);
+    if (!node->next) 
+        return list_RemoveBottom(list);
     
     Data_t *data = node->data;
-
     // Disconnect Node from List
     // Connect the corresponding adjacent Nodes together
     node->prev->next = node->next;
@@ -204,10 +197,11 @@ list_Reverse(List_t *list)
     Node_t *curr_node = list->top;
     Node_t *tmp;
 
-    if (list->size <= 1) return;
+    if (list->size <= 1) 
+        return;
 
     while (curr_node) 
-    {
+    {   
         // Swap "next" and "prev" pointers
         tmp = curr_node->next;
         curr_node->next = curr_node->prev;
@@ -225,7 +219,8 @@ list_Reverse(List_t *list)
 void 
 list_Split(List_t *list, Data_t *pivot) 
 {
-    if (list->size < 2) return;
+    if (list->size < 2) 
+        return;
     
     List_t *tmp_list = list_Create();
     Node_t *curr_node = list->top;
@@ -243,7 +238,8 @@ list_Split(List_t *list, Data_t *pivot)
             list_InsertBottom(tmp_list, tmp_data);
             curr_node = next_node;
         } 
-        else curr_node = curr_node->next;
+        else 
+            curr_node = curr_node->next;
     }
     
     if (list->size == 0) 
@@ -262,11 +258,9 @@ list_Split(List_t *list, Data_t *pivot)
         list->size += tmp_list->size;
     }
     
-
     tmp_list->top = NULL;
     tmp_list->bottom = NULL;
     free(tmp_list);
-    tmp_list = NULL;
 }
 
 // This is a O(n^2) implementation of sorting, the code 
@@ -292,7 +286,8 @@ list_Contains(List_t *list, Data_t *data)
     Node_t *current = list->top;
     while (current)
     {
-        if (data_Compare(current->data, data) == 0) return true;
+        if (data_Compare(current->data, data) == 0) 
+            return true;
         current = current->next;
     }
     return false;

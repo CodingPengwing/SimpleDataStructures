@@ -5,6 +5,7 @@
 
 #include <string.h>
 #include <stdio.h>
+#include <assert.h>
 #include "util.h"
 
 #ifndef DATA_H
@@ -36,6 +37,7 @@ Data_t *
 data_Create(int x, int y, int z, char *string) 
 {
     Data_t *data = (Data_t *) malloc(sizeof(*data));
+    assert(data);
     data->x = x;
     data->y = y;
     data->z = z;

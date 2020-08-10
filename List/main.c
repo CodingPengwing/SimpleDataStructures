@@ -23,6 +23,5 @@ int main(int argc, char const *argv[])
     list_Sort(list);
     list_Print(list);
     list_Free(list);
-
     return 0;
 }

@@ -40,7 +40,8 @@ array_Print(Array_t array, size_t size)
     for (size_t i = 0; i < size; i++)
     {
         data_Print(array);
-        if (i != size-1) printf(", ");
+        if (i != size-1) 
+            printf(", ");
         array++;
     }
     printf("]\n");

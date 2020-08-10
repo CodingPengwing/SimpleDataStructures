@@ -5,6 +5,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <assert.h>
 
 #include "Data.h"
 #include "Node.h"
@@ -22,6 +23,7 @@ typedef List_t ** AdjacencyList_t;
 AdjacencyList_t adjacencyList_Create(size_t length)
 {
     AdjacencyList_t adjList = (AdjacencyList_t) malloc(length * sizeof(*adjList));
+    assert(adjList);
     for (size_t i = 0; i < length; i++) 
         adjList[i] = list_Create();    
     return adjList;

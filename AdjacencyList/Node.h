@@ -20,7 +20,6 @@ node_Create(Data_t *data)
 {
     Node_t *node = (Node_t *) malloc(sizeof(*node));
     assert(node);
-
     node->data = data;
     node->next = NULL;
     node->prev = NULL;
@@ -31,7 +30,8 @@ node_Create(Data_t *data)
 void 
 node_Free(Node_t *node) 
 {
-    if (node->data) data_Free(node->data);
+    if (node->data) 
+        data_Free(node->data);
     free(node);
 }
 

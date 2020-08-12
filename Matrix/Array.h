@@ -15,11 +15,11 @@
 
 typedef Data_t * Array_t;
 
-// Make a new Array of specifed size
+// Make a new Array of specified length
 Array_t
-array_Create(size_t size) 
+array_Create(size_t length) 
 {
-    Array_t array = (Array_t) malloc(size * sizeof(*array));
+    Array_t array = (Array_t) malloc(length * sizeof(*array));
     return array;
 }
 
@@ -32,22 +32,22 @@ array_Insert(Array_t array, Data_t *data, size_t index)
 
 // Free an Array
 void 
-array_Free(Array_t array, size_t size)
+array_Free(Array_t array, size_t length)
 {
-    for (size_t i = 0; i < size; i++) 
+    for (size_t i = 0; i < length; i++) 
         data_Free(&array[i]);
     free(array);
 }
 
 // Print the Array - [x_0, x_1, ... x_n-1]
 void 
-array_Print(Array_t array, size_t size)
+array_Print(Array_t array, size_t length)
 {
     printf("[");
-    for (size_t i = 0; i < size; i++)
+    for (size_t i = 0; i < length; i++)
     {
         data_Print(array);
-        if (i != size-1) 
+        if (i != length-1) 
             printf(", ");
         array++;
     }
@@ -56,9 +56,9 @@ array_Print(Array_t array, size_t size)
 
 // Sort an Array
 void 
-array_Sort(Array_t array, size_t size)
+array_Sort(Array_t array, size_t length)
 {
-    qsort(array, size, sizeof(*array), data_Compare);
+    qsort(array, length, sizeof(*array), data_Compare);
 }
 
 #endif

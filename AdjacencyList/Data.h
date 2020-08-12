@@ -12,7 +12,7 @@
 #define DATA_H
 
 // If you change Data definition, you *have to* change data_Create(),
-// data_Free(), data_Print() and data_Compare() functions
+// data_Free(), data_Print(), data_Compare() and dataArray_Compare() functions
 typedef struct data Data_t;
 struct data {
     int x;
@@ -31,7 +31,11 @@ void data_Free(Data_t *data);
 void data_Print(Data_t *data);
 
 //  Compare Datas, return -1 if data_1 is smaller, return +1 if data_1 is larger
-int data_Compare(const void *data_1, const void *data_2);
+int data_Compare(Data_t *data_1, Data_t *data_2);
+
+//  Compare Datas in Arrays (pointer to pointer to Data)
+int dataArray_Compare(const void *data_1, const void *data_2);
+
 
 Data_t *
 data_Create(int x, int y, int z, char *string) 
@@ -59,6 +63,7 @@ void
 data_Free(Data_t *data)
 {
     string_Free(data->string);
+    free(data);
 }
 
 void 
@@ -68,27 +73,32 @@ data_Print(Data_t *data)
 }
 
 int 
-data_Compare(const void *data_1, const void *data_2)
+data_Compare(Data_t *data_1, Data_t *data_2)
 {
-    Data_t const *d_1 = (Data_t *) data_1;
-    Data_t const *d_2 = (Data_t *) data_2;
+    if (data_1->x < data_2->x) return -1;
+    if (data_1->x > data_2->x) return +1;
 
-    if (d_1->x < d_2->x) return -1;
-    if (d_1->x > d_2->x) return +1;
+    if (data_1->y < data_2->y) return -1;
+    if (data_1->y > data_2->y) return +1;
 
-    if (d_1->y < d_2->y) return -1;
-    if (d_1->y > d_2->y) return +1;
+    if (data_1->z < data_2->z) return -1;
+    if (data_1->z > data_2->z) return +1;
 
-    if (d_1->z < d_2->z) return -1;
-    if (d_1->z > d_2->z) return +1;
-
-    size_t len1 = strlen(d_1->string);
-    size_t len2 = strlen(d_2->string);
+    size_t len1 = strlen(data_1->string);
+    size_t len2 = strlen(data_2->string);
     if (len1 == 0 && len2 != 0) return -1;
     if (len1 != 0 && len2 == 0) return +1;
 
     size_t n = (len1 < len2) ? len1 : len2;
-    return strncmp(d_1->string, d_2->string, n);
+    return strncmp(data_1->string, data_2->string, n);
+}
+
+int
+dataArray_Compare(const void *data_1, const void *data_2)
+{
+    Data_t **d_1 = (Data_t **) data_1;
+    Data_t **d_2 = (Data_t **) data_2;
+    return data_Compare(*d_1, *d_2);
 }
 
 #endif

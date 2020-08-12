@@ -35,6 +35,12 @@ node_Free(Node_t *node)
     free(node);
 }
 
+void
+node_Print(Node_t *node)
+{
+    data_Print(node->data);
+}
+
 void 
 node_Swap_Positions(Node_t *node_1, Node_t *node_2)
 {

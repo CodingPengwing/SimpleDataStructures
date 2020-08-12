@@ -6,7 +6,7 @@
 int main(int argc, char const *argv[])
 {
     int rows = 5, columns = 10;
-    Matrix_t matrix = matrix_Create(rows, columns);
+    Matrix_t *matrix = matrix_Create(rows, columns);
     for (size_t i = 0; i < rows; i++)
     {
         for (size_t j = 0; j < columns; j++)

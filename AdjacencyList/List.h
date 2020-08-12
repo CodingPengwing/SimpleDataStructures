@@ -23,8 +23,8 @@ struct linked_list
 };
 
 // Create a new empty List and return a pointer to it
-List_t 
-*list_Create() 
+List_t *
+list_Create() 
 {
     List_t *list = (List_t *) malloc(sizeof(*list));
     assert(list);
@@ -42,7 +42,7 @@ list_Print(List_t *list)
     printf("[");
     while (current) 
     {
-        data_Print(current->data);
+        node_Print(current);
         // Print a comma unless we just printed the final element
         if (current != list->bottom) 
             printf(", ");
@@ -108,8 +108,8 @@ list_RemoveTop(List_t *list)
     if (list->size == 0) 
         exit_with_error("can't remove from empty list");
     
-    Data_t *data = list->top->data;
     Node_t *old_top = list->top;
+    Data_t *data = old_top->data;
 
     if (list->size > 1)
     {
@@ -122,7 +122,7 @@ list_RemoveTop(List_t *list)
     list->size--;
     // free old_top but not its Data
     old_top->data = NULL;
-    free(old_top);
+    node_Free(old_top);
     return data;
 }
 
@@ -133,8 +133,8 @@ list_RemoveBottom(List_t *list)
     if (list->size == 0) 
         exit_with_error("can't remove from empty list");
     
-    Data_t *data = list->bottom->data;
     Node_t *old_bottom = list->bottom;
+    Data_t *data = old_bottom->data;
 
     if (list->size > 1) 
     {
@@ -147,7 +147,7 @@ list_RemoveBottom(List_t *list)
     list->size--;
     // free old_bottom but not its Data
     old_bottom->data = NULL;
-    free(old_bottom);
+    node_Free(old_bottom);
     return data;
 }
 

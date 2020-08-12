@@ -11,8 +11,8 @@ int main(int argc, char const *argv[])
     {
         for (size_t j = 0; j < columns; j++)
         {
-            Data_t data = *data_Create(i, j, (i+j)/2, "Cool");
-            matrix[i][j] = data;
+            Data_t *data = data_Create(i, j, (i+j)/2, "Cool");
+            matrix_Insert(matrix, data, i, j);
         }
     }
 

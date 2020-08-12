@@ -23,6 +23,13 @@ array_Create(size_t size)
     return array;
 }
 
+// Insert a Data into an Array at given index
+void
+array_Insert(Array_t array, Data_t *data, size_t index)
+{
+    array[index] = *data;
+}
+
 // Free an Array
 void 
 array_Free(Array_t array, size_t size)

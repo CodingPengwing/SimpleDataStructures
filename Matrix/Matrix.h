@@ -13,6 +13,7 @@
 
 typedef Array_t * Matrix_t;
 
+// Create a Matrix of size (rows x columns)
 Matrix_t 
 matrix_Create(size_t rows, size_t columns)
 {
@@ -22,6 +23,14 @@ matrix_Create(size_t rows, size_t columns)
     return matrix;
 }
 
+// Insert a Data into a Matrix at given (row - column) position
+void
+matrix_Insert(Matrix_t matrix, Data_t *data, size_t row, size_t column)
+{
+    matrix[row][column] = *data;
+}
+
+// Free a Matrix of size (rows x columns)
 void 
 matrix_Free(Matrix_t matrix, size_t rows, size_t columns)
 {
@@ -30,6 +39,7 @@ matrix_Free(Matrix_t matrix, size_t rows, size_t columns)
     free(matrix);
 }
 
+// Print a Matrix of size (rows x columns)
 void 
 matrix_Print(Matrix_t matrix, size_t rows, size_t columns)
 {

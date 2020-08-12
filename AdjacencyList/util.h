@@ -45,6 +45,7 @@ string_Create(size_t length)
 {
     char *string = (char *) malloc(length*sizeof(char));
     assert(string);
+    
     for (size_t i = 0; i < length; i++) 
         string[i] = '\0';
     return string;

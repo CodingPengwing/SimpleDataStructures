@@ -1,7 +1,6 @@
 # C-DataStructures_Core
 An attempt to make some beautiful looking reusable/maintainable code for some fundamental Data Structures
-in C, while also having a crack at *simulating* a sort of Object Oriented Programming structure in each 
-Data Structure by using header files (.h) as "classes". 
+in C. 
 
 To test the codes: 
 1. Clone the folders 

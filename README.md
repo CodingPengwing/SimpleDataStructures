@@ -1,18 +1,24 @@
-# C-DataStructures_Core
-An attempt to make some beautiful looking reusable/maintainable code for some fundamental Data Structures
-in C. 
+# BasicDataStructures
+A collection of libraries of some easily reusable/maintainable code for basic Data Structures in C. 
+These libraries can be adapted to work with any data type or any combination of data (eg. tuple), 
+so long as the Data files are properly modified to cater for those specific data types.
 
 To test the codes: 
 1. Clone the folders 
-2. Navigate to each folder in terminal, type "make" to make the files 
-3. Type "make run" to run the executable 
-4. Type "make clean" to clean up the executables when done (this was written for UNIX, for Windows the 
-   executable is named differently and thus it won't clean up properly and will leave the test.exe file, 
-   you can just manually delete that)
+2. Navigate to each specific folder for a data structure in terminal
+3. Run the following commands:
+To compile:
+- make
+To test:
+- make test
+To clean up:
+- make clean
 
-Feel free to change the main() function in each folder to test to your own liking.
-I will add functionality to take input soon.
-
-PS. To unclutter the code, exception handling has been mostly omitted with only a few assert()'s after 
-using malloc(). An integration of these libraries into any code should be tweaked to check for more 
-errors with the use of exit_with_error() defined within "util.h".
+Note:
+To unclutter the code, exception handling has been mostly omitted. It is recommended 
+that for any integration of this library in a program, the code in each section should be 
+read through and modified to have sufficient error checking first. The following error 
+checks are recommended:
+- Null inputs into functions
+- Null indices in an array/matrix/adjacency list
+The function exit_with_error() has been defined in util and is very useful for debugging.

@@ -3,6 +3,9 @@ A collection of libraries of some easily reusable/maintainable code for basic Da
 These libraries can be adapted to work with any data type or any combination of data (eg. tuple), 
 so long as the Data files are properly modified to cater for those specific data types.
 
+The creation (memory allocation), insertion, and deletion (memory freeing) of elements are abstracted 
+into functions, hiding the details of pointer and memory allocation from the user.
+
 To test the codes: 
 1. Clone the folders 
 2. Navigate to each specific folder for a data structure in terminal

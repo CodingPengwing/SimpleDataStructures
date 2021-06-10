@@ -1,6 +1,6 @@
 An implementation of dynamically managed adjacency lists. 
-The creation (memory allocation), insertion, and deletion (free) of the array
-and elements inside the array are abstracted into functions, hiding the details
+The creation (memory allocation), insertion, and deletion (free) of the adjacency list
+and elements inside the adjacency list are abstracted into functions, hiding the details
 of pointer and memory allocation from the user.
 
 See main.c for a test case.

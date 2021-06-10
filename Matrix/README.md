@@ -1,6 +1,6 @@
 An implementation of dynamically managed matrices (or 2d arrays). 
-The creation (memory allocation), insertion, and deletion (free) of the array
-and elements inside the array are abstracted into functions, hiding the details
+The creation (memory allocation), insertion, and deletion (free) of the matrix,
+and elements inside the matrix are abstracted into functions, hiding the details 
 of pointer and memory allocation from the user.
 
 See main.c for a test case.

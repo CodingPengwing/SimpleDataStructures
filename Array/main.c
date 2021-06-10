@@ -21,7 +21,10 @@ int main(int argc, char const *argv[])
         array_Insert(array, data, i);
     }
     
+    println("Original array:");
     array_Print(array, size);
+
+    println("Sorted array:");
     array_Sort(array, size);
     array_Print(array, size);
 

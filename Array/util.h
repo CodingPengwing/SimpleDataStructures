@@ -29,4 +29,4 @@ string_Create(size_t length);
 void 
 string_Free(char *string);
 
-#endif
+#endif // UTIL_H

@@ -1,5 +1,5 @@
 # CC - compiler
-CC=clang
+CC=gcc
 # OBJ - compiled source files that should be linked
 OBJ=Array.o Data.o util.o
 # COPT - compiler flags

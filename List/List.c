@@ -173,20 +173,20 @@ list_Free(List_t *list)
 void 
 list_Reverse(List_t *list) 
 {
-    Node_t *curr_node = list->top;
+    Node_t *curr = list->top;
     Node_t *tmp;
 
     if (list->size <= 1) 
         return;
 
-    while (curr_node) 
+    while (curr) 
     {   
         // Swap "next" and "prev" pointers
-        tmp = curr_node->next;
-        curr_node->next = curr_node->prev;
-        curr_node->prev = tmp;
+        tmp = curr->next;
+        curr->next = curr->prev;
+        curr->prev = tmp;
         // Move to next Node in List, which is now "prev" Node
-        curr_node = curr_node->prev;
+        curr = curr->prev;
     }
     // Swap top and bottom pointers
     tmp = list->top;
@@ -196,50 +196,32 @@ list_Reverse(List_t *list)
 
 // Move all values that are bigger than the pivot to the bottom of the List
 void 
-list_Split(List_t *list, Data_t *pivot) 
+list_Sift(List_t *list, Data_t *pivot) 
 {
-    if (list->size < 2) 
-        return;
-    
-    List_t *tmp_list = list_Create();
-    Node_t *curr_node = list->top;
-    Node_t *next_node;
-    Data_t *tmp_data;
+    if (list->size <= 1) return;
+    Node_t *curr = list->top;
+    Node_t *swap;
 
     // Remove any Node with value > pivot, insert them at the 
     // bottom of tmp_list
-    while (curr_node) 
+    while (curr) 
     {
-        if (data_Compare(curr_node->data, pivot) > 0) 
+        if (data_Compare(curr->data, pivot) > 0) 
         {
-            next_node = curr_node->next;
-            tmp_data = list_RemoveCustom(list, curr_node);
-            list_InsertBottom(tmp_list, tmp_data);
-            curr_node = next_node;
+            swap = curr->next;
+            // try to find the next node that is <= pivot
+            while (swap)
+            {
+                if (data_Compare(swap->data, pivot) <= 0) break;
+                else swap = swap->next;
+            }
+            // if swap is NULL, there is no more shuffling to be done
+            if (!swap) break;
+            // else swap the data of the 2 nodes
+            node_Swap_Data(curr, swap);
         } 
-        else 
-            curr_node = curr_node->next;
+        curr = curr->next;
     }
-    
-    if (list->size == 0) 
-    {   // If all elements have been moved to 'tmp_list' then
-        // make List = 'tmp_list'
-        list->top = tmp_list->top;
-        list->bottom = tmp_list->bottom;
-        list->size = tmp_list->size;
-    } 
-    else if (tmp_list->size != 0)
-    {   // Otherwise, concatenate 'tmp_list' to the bottom 
-        // of the List
-        list->bottom->next = tmp_list->top;
-        tmp_list->top->prev = list->bottom;
-        list->bottom = tmp_list->bottom;
-        list->size += tmp_list->size;
-    }
-    
-    tmp_list->top = NULL;
-    tmp_list->bottom = NULL;
-    free(tmp_list);
 }
 
 // This is a O(n^2) implementation of sorting, the code is quite short but the
@@ -254,7 +236,7 @@ list_Sort(List_t *list)
     while (current)
     {
         // Move all elements bigger than current Data to bottom of List
-        list_Split(list, current->data);
+        list_Sift(list, current->data);
         current = current->next;
     }
 }

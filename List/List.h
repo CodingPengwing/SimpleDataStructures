@@ -64,7 +64,7 @@ list_Reverse(List_t *list);
 
 // Move all values that are bigger than the pivot to the bottom of the List
 void 
-list_Split(List_t *list, Data_t *pivot);
+list_Sift(List_t *list, Data_t *pivot);
 
 // This is a O(n^2) implementation of sorting, the code is quite short but the
 // computation are quite taxing. It might be better to just copy all the elements 

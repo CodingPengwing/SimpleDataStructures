@@ -1,24 +1,35 @@
-# The compiler flags used when compiling
-CFLAGS=-Wall -Wno-comment
+# CC - compiler
+CC=gcc
+# OBJ - compiled source files that should be linked
+OBJ=AdjacencyList.o Data.o List.o Node.o util.o
+# COPT - compiler flags
+COPT=-Wall -Wpedantic -g 
+# BIN - binary
+BIN_MAIN=adjacencylist
 
-OUTPUT_FILES=main.o 
-HEADER_FILES=Data.h Node.h List.h AdjacencyList.h util.h
+# Running "make" with no argument will make the first target in the file
+all: $(BIN_MAIN)
 
-test: $(OUTPUT_FILES)
-	gcc $(CFLAGS) -o test $(OUTPUT_FILES)
+# Rules of the form
+#     target_to_be_made : dependencies_to_be_up-to-date_first
+#     <tab>commands_to_make_target
+# (Note that spaces will not work.)
 
-main.o: main.c $(HEADER_FILES)
-	gcc $(CFLAGS) -c main.c
+$(BIN_MAIN): main.c $(OBJ)
+	$(CC) -o $(BIN_MAIN) main.c $(OBJ) $(COPT)
 
-# This .PHONY command declares the "clean" and "run" rules as a phony one, 
-# i.e., it means that the rules will run instructions but it wont create a
-# file called "clean" or "run" like a normal rule would (e.g., the main.o 
-# rule results in a file called main.o being created).
-.PHONY: run
-run:
-	./test
+
+# Wildcard rule to make any .o file,
+# given a .c and .h file with the same leading filename component
+%.o: %.c %.h
+	$(CC) -c $< $(COPT) -g
+
+format:
+	clang-format -i *.c *.h
 
 .PHONY: clean
 clean:
-	rm *.o
-	rm test
+	rm -rf $(BIN_MAIN) $(BIN_MAIN).exe *.o
+
+test:
+	./$(BIN_MAIN)

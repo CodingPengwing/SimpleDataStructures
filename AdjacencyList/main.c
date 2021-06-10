@@ -8,7 +8,7 @@
 int main(int argc, char const *argv[])
 {
     size_t length = 10;
-    char *strings[] = {"I", "am", "just", "so", "epic", "look", "at", "this", "code", "though"};
+    char *strings[] = {"I", "am", "just", "so", "amazed", "look", "at", "this", "code", "though"};
 
     AdjacencyList_t *adjList = adjacencyList_Create(length);
     for (size_t i = 0; i < 30; i++)

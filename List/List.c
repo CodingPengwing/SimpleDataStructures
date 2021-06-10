@@ -27,7 +27,7 @@ list_Print(List_t *list)
             printf(", ");
         current = current->next;
     }
-    printf("]\n");
+    printf("]");
 }
 
 // Recalculate the number of elements in a List

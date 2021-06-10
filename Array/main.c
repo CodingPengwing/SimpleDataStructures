@@ -23,10 +23,12 @@ int main(int argc, char const *argv[])
     
     println("Original array:");
     array_Print(array, size);
+    println("");
 
     println("Sorted array:");
     array_Sort(array, size);
     array_Print(array, size);
+    println("");
 
     array_Free(array, size);
     return 0;

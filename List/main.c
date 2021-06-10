@@ -18,9 +18,15 @@ int main(int argc, char const *argv[])
         list_InsertBottom(list, data);
     }
 
+    println("Original list:");
     list_Print(list);
+    println("");
+
+    println("Sorted list:");
     list_Sort(list);
     list_Print(list);
+    println("");
+    
     list_Free(list);
     return 0;
 }

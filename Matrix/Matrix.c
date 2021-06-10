@@ -25,7 +25,14 @@ void
 matrix_Print(Matrix_t *matrix, size_t rows, size_t columns)
 {
     for (size_t i = 0; i < rows; i++)
-        array_Print(matrix[i], columns);
+    {
+        if(matrix[i]) 
+        { 
+            array_Print(matrix[i], columns);
+            println("");
+        }
+        else println("[]");
+    }
 }
 
 // Insert a Data into a Matrix at given (row - column) position

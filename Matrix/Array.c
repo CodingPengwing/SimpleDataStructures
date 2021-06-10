@@ -31,7 +31,7 @@ array_Print(Array_t *array, size_t length)
         if (i != length-1) 
             printf(", ");
     }
-    printf("]\n");
+    printf("]");
 }
 
 // Insert a Data into an Array at given index

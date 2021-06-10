@@ -1,4 +1,4 @@
-# BasicDataStructures
+# SimpleDataStructures
 A collection of libraries of some easily reusable/maintainable code for basic Data Structures in C. 
 These libraries can be adapted to work with any data type or any combination of data (eg. tuple), 
 so long as the Data files are properly modified to cater for those specific data types.

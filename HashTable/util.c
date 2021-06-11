@@ -47,7 +47,7 @@ check_index(size_t size, int index)
 int
 scan_line(char *line, size_t input_length) 
 {
-    if (!line) exit_with_error("Error: scan_line() was given NULL");
+    if (line == NULL) exit_with_error("Error: scan_line() was given NULL");
 
     size_t i = 0;
     if (fgets(line, input_length, stdin)) 
@@ -62,7 +62,7 @@ scan_line(char *line, size_t input_length)
 char *
 string_Copy(char *string) 
 {
-    if (!string) exit_with_error("Error in string_Copy(): NULL input.");
+    if (string == NULL) exit_with_error("Error in string_Copy(): NULL input.");
     size_t len = strlen(string);
     // Malloc 1 extra byte for null byte
     char *new_string = (char *)malloc((len+1)*sizeof(char));
@@ -76,7 +76,7 @@ string_Copy(char *string)
 void 
 string_Free(char *string) 
 {
-    if (!string) exit_with_error("Error: string_Free() was given NULL");
+    if (string == NULL) exit_with_error("Error: string_Free() was given NULL");
     free(string);
 }
 
@@ -84,7 +84,7 @@ string_Free(char *string)
 void
 string_clean_newline(char *string)
 {
-    if (!string) exit_with_error("Error: string_CleanNewLine() was given NULL");
+    if (string == NULL) exit_with_error("Error: string_CleanNewLine() was given NULL");
 
     for (size_t i = 0; i < strlen(string); i++)
     {

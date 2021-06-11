@@ -7,7 +7,7 @@
 Data_t *
 data_Create(char *string) 
 {
-    if (!string) exit_with_error("Error: data_Create() was given NULL");
+    if (string == NULL) exit_with_error("Error: data_Create() was given NULL");
     Data_t *data = (Data_t *) malloc(sizeof(*data));    
     assert(data);
     data->string = string_Copy(string);
@@ -63,7 +63,7 @@ data_Copy(Data_t *data)
 {
     if (!data)
         exit_with_error("Error: data_Copy() was given NULL");
-    if (!data->string)
+    if (data->string == NULL)
         exit_with_error("Error: data_Copy() Data is undefined");
         
     return data_Create(data->string);

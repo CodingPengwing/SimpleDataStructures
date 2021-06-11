@@ -50,7 +50,7 @@ scan_word(char *buffer, size_t buffer_len, FILE *fp)
 char *
 string_Copy(char *string) 
 {
-    if (!string) exit_with_error("Error in string_Copy(): NULL input.");
+    if (string == NULL) exit_with_error("Error in string_Copy(): NULL input.");
     size_t len = strlen(string);
     // Malloc 1 extra byte for null byte
     char *new_string = (char *)malloc((len+1)*sizeof(char));

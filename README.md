@@ -9,10 +9,13 @@ into functions, hiding the details of pointer and memory allocation from the use
 To test the codes: 
 1. Clone the folders 
 2. Navigate to each specific folder for a data structure in terminal
-3. Run the following commands:  
+3. Run the following command:  
+- make test  
+Which is a combination of these 3 commands (you can use these if the first one doesn't work):
 - make
-- make test
+- make run_test
 - make clean
+
 
 Note:
 To unclutter the code, exception handling has been mostly omitted. It is recommended 

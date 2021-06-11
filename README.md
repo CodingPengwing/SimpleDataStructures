@@ -9,7 +9,7 @@ into functions, hiding the details of pointer and memory allocation from the use
 To test the codes: 
 1. Clone the folders 
 2. Navigate to each specific folder for a data structure in terminal
-3. Run the following commands:
+3. Run the following commands:  
 - make
 - make test
 - make clean
@@ -18,7 +18,7 @@ Note:
 To unclutter the code, exception handling has been mostly omitted. It is recommended 
 that for any integration of this library in a program, the code in each section should be 
 read through and modified to have sufficient error checking first. The following error 
-checks are recommended:
+checks are recommended:  
 - Null inputs into functions
 - Null indices in an array/matrix/adjacency list
 

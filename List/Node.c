@@ -28,6 +28,12 @@ node_Print(Node_t *node)
     data_Print(node->data);
 }
 
+int
+node_Compare(Node_t *node_1, Node_t *node_2)
+{
+    return data_Compare(node_1->data, node_2->data);
+}
+
 void 
 node_Swap_Data(Node_t *node_1, Node_t *node_2)
 {

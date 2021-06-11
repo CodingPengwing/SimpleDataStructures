@@ -25,6 +25,9 @@ node_Free(Node_t *node);
 void
 node_Print(Node_t *node);
 
+int
+node_Compare(Node_t *node_1, Node_t *node_2);
+
 void 
 node_Swap_Data(Node_t *node_1, Node_t *node_2);
 

@@ -1,4 +1,4 @@
-#Binary Tree#
+# Binary Tree #
 An implementation of dynamically managed binary trees. 
 The creation (memory allocation), insertion, and deletion (free) of the adjacency list
 and elements inside the adjacency list are abstracted into functions, hiding the details

@@ -46,4 +46,3 @@ this:
 _(Check the tests files for more examples)_
 
 Testing instructions:  
-

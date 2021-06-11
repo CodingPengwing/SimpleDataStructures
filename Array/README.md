@@ -6,9 +6,9 @@ of pointer and memory allocation from the user.
 See main.c for a test case.
 
 Test instructions:
-- make test
+- make test  
 
-This should compile all files and execute main.
-
-Clean up instructions:
+Which is a combination of these 3 commands (you can use these if the first one doesn't work):
+- make
+- make run_test
 - make clean

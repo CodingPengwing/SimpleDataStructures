@@ -120,7 +120,7 @@ recursive_print(Node_t *root, void print(Data_t*, FILE*), FILE *fp) {
 void
 tree_Print(Tree_t *tree)
 {
-    recursive_print(tree->root, tree->print_file_func, stdin);
+    recursive_print(tree->root, tree->print_file_func, stdout);
 }
 
 // Print the Tree in left->right order to a file

@@ -34,6 +34,11 @@ scan_word(char *buffer, size_t buffer_len, FILE *fp)
     while (read_length < buffer_len-1)
     {
         if ((tmp = fgetc(fp)) == EOF) return EOF;
+        if (tmp == '-' && read_length > 0)
+        {
+            buffer[read_length++] = tmp;
+            continue;
+        }
         if (!isalnum(tmp) && tmp != SINGLE_QUOTE) break;
         buffer[read_length++] = tmp;
     }

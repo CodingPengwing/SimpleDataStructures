@@ -11,13 +11,18 @@
 int
 main(int argc, char const *argv[])
 {
-    Tree_t *tree = tree_Create();
+    // buffer for reading words
     char buffer[MAXCHARS];
+    // Input and output files
     FILE *fp_in = fopen(INPUT_FILE, "r");
     assert(fp_in);
     FILE *fp_out = fopen(OUTPUT_FILE, "w");
     assert(fp_out);
+
+    // Create tree
+    Tree_t *tree = tree_Create();
     int len;
+    // Scan input and insert into tree
     while ((len = scan_word(buffer, MAXCHARS, fp_in)) >= 0)
     {
         if (!len) continue;
@@ -26,7 +31,10 @@ main(int argc, char const *argv[])
         data.frequency = 0;
         tree_insert(tree, &data);
     }
-    // tree_Print(tree);
+    // Print our trees in increasing order of Nodes
+    tree_Print(tree);
     tree_Print_to_file(tree, fp_out);
+
+    // Ensure everybody's freedom, recursively
     tree_Free(tree);
 }

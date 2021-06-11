@@ -45,4 +45,10 @@ this:
 
 _(Check the tests files for more examples)_
 
-Testing instructions:  
+Test instructions:
+- make test  
+
+Which is a combination of these 3 commands (you can use these if the first one doesn't work):
+- make
+- make run_test
+- make clean

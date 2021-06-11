@@ -75,7 +75,7 @@ data_Compare(Data_t *data_1, Data_t *data_2)
     return strncmp(data_1->string, data_2->string, n);
 }
 
-//  Compare Datas in Arrays (pointer to pointer to Data)
+//  Compare Datas in Arrays (when array is **Data)
 int
 dataArray_Compare(const void *data_1, const void *data_2)
 {

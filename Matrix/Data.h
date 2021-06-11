@@ -36,7 +36,7 @@ void data_Print(Data_t *data);
 //  Compare Datas, return -1 if data_1 is smaller, return +1 if data_1 is larger
 int data_Compare(Data_t *data_1, Data_t *data_2);
 
-//  Compare Datas in Arrays (pointer to pointer to Data)
+//  Compare Datas in Arrays (when array is **Data)
 int dataArray_Compare(const void *data_1, const void *data_2);
 
 #endif // DATA_H

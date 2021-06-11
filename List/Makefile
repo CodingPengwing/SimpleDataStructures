@@ -18,6 +18,10 @@ all: $(BIN_MAIN)
 $(BIN_MAIN): main.c $(OBJ)
 	$(CC) -o $(BIN_MAIN) main.c $(OBJ) $(COPT)
 
+run_test:
+	./$(BIN_MAIN)
+
+test: $(BIN_MAIN) run_test clean
 
 # Wildcard rule to make any .o file,
 # given a .c and .h file with the same leading filename component
@@ -29,7 +33,4 @@ format:
 
 .PHONY: clean
 clean:
-	rm -rf $(BIN_MAIN) $(BIN_MAIN).exe *.o
-
-test:
-	./$(BIN_MAIN)
+	rm -rf $(BIN_MAIN) $(BIN_MAIN).exe *.o *.dSYM

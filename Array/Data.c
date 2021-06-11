@@ -53,7 +53,7 @@ data_Print(Data_t *data)
     printf("(%d, %d, %d, %s)", data->x, data->y, data->z, data->string);
 }
 
-//  Compare Datas, return -1 if data_1 is smaller, return +1 if data_1 is larger
+//  Compare Datas, return -1 if data_1 < data_2, return +1 if data_1 > data_2
 int 
 data_Compare(Data_t *data_1, Data_t *data_2)
 {
@@ -66,13 +66,7 @@ data_Compare(Data_t *data_1, Data_t *data_2)
     if (data_1->z < data_2->z) return -1;
     if (data_1->z > data_2->z) return +1;
 
-    size_t len1 = strlen(data_1->string);
-    size_t len2 = strlen(data_2->string);
-    if (len1 == 0 && len2 != 0) return -1;
-    if (len1 != 0 && len2 == 0) return +1;
-
-    size_t n = (len1 < len2) ? len1 : len2;
-    return strncmp(data_1->string, data_2->string, n);
+    return strcmp(data_1->string, data_2->string);
 }
 
 //  Compare Datas in Arrays (when array is **Data)

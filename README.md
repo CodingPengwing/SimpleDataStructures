@@ -21,4 +21,5 @@ read through and modified to have sufficient error checking first. The following
 checks are recommended:
 - Null inputs into functions
 - Null indices in an array/matrix/adjacency list
+
 The function exit_with_error() has been defined in util and is very useful for debugging.

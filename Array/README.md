@@ -6,7 +6,6 @@ of pointer and memory allocation from the user.
 See main.c for a test case.
 
 Test instructions:
-- make
 - make test
 
 This should compile all files and execute main.

@@ -10,11 +10,8 @@ To test the codes:
 1. Clone the folders 
 2. Navigate to each specific folder for a data structure in terminal
 3. Run the following commands:
-To compile:
 - make
-To test:
 - make test
-To clean up:
 - make clean
 
 Note:

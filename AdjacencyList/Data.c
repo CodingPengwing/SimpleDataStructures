@@ -10,18 +10,32 @@ data_Create(int x, int y, int z, char *string)
     data->x = x;
     data->y = y;
     data->z = z;
-
-    size_t string_len = 1;
-    if (string)
-    {
-        string_len += strlen(string);
-        data->string = string_Create(string_len);
-        strncpy(data->string, string, string_len);
-    }
-    else
-        data->string = string_Create(string_len);
-    
+    if (string) data->string = string_Copy(string);
+    else data->string = string_Copy("");
     return data;
+}
+
+// Update this data to new parameters.
+// Warning: This function will never finish with data having NULL for its string.
+// If it is given a NULL pointer for the string parameter, it will generate an 
+// empty string. To keep the same string, the same data->string should be provided 
+// for the string parameter.
+void data_Update(Data_t *data, int x, int y, int z, char *string)
+{
+    data->x = x;
+    data->y = y;
+    data->z = z;
+    // If they are the same pointer, they are the same string.
+    if (data->string == string) return;
+    // Otherwise free the old string
+    if (data->string)
+    {
+        string_Free(data->string);
+        data->string = NULL;
+    }
+    // Create a copy of the new string
+    if (string) data->string = string_Copy(string);
+    else data->string = string_Copy("");
 }
 
 //  Free all the variables inside the Data

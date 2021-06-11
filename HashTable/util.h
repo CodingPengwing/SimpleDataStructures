@@ -30,7 +30,7 @@ scan_line(char *line, size_t input_length);
 
 // Create a new string
 char *
-string_Create(size_t length);
+string_Copy(char *string);
 
 // Frees a string
 void 

@@ -24,6 +24,9 @@ struct data {
 //  Create a new piece of Data
 Data_t *data_Create(int x, int y, int z, char *string);
 
+// Update this data to new parameters
+void data_Update(Data_t *data, int x, int y, int z, char *string);
+
 //  Free all the variables inside the Data
 void data_Free(Data_t *data);
 

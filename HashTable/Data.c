@@ -1,18 +1,16 @@
 
 #include "Data.h"
 
+// Creates a Data containing a string. This function cannot be given a NULL
+// because it a NULL pointer cannot be hashed. Empty strings should be given
+// instead of NULL pointer.
 Data_t *
 data_Create(char *string) 
 {
-    if (!string)
-        exit_with_error("Error: data_Create() was given NULL");
-
+    if (!string) exit_with_error("Error: data_Create() was given NULL");
     Data_t *data = (Data_t *) malloc(sizeof(*data));    
-    if (!data)
-        exit_with_error("Error: data_Create() failed to malloc");
-
-    data->string = string_Create(strlen(string) + 1);
-    strncpy(data->string, string, strlen(string));
+    assert(data);
+    data->string = string_Copy(string);
     return data;
 }
 

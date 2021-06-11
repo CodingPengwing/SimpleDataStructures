@@ -36,7 +36,9 @@ test3:
 test4:
 	./$(BIN_MAIN) < tests/test-4-in.txt
 
-test: $(BIN_MAIN) test1 test2 test3 test4 clean
+run_test: test1 test2 test3 test4 
+
+test: $(BIN_MAIN) run_test clean
 
 .PHONY: clean
 clean:

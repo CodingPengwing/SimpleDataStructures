@@ -69,7 +69,7 @@ data_Compare(Data_t *data_1, Data_t *data_2)
     return strcmp(data_1->string, data_2->string);
 }
 
-//  Compare Datas in Arrays (when array is **Data)
+//  Compare Datas in Arrays (when array is **Data), used for qsort()
 int
 dataArray_Compare(const void *data_1, const void *data_2)
 {

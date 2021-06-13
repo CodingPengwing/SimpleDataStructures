@@ -214,7 +214,7 @@ list_Sort(List_t *list)
     }
 
     // Sort the Nodes
-    qsort(array, list->size, sizeof(*array), node_CompareSort);
+    qsort(array, list->size, sizeof(*array), (int (*)(const void *, const void *))node_p_Compare);
 
     // Link the Nodes back together in the new order
     for (size_t i = 0; i < list->size - 1; i++)

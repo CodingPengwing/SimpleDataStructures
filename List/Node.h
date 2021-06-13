@@ -32,6 +32,6 @@ void
 node_Swap_Data(Node_t *node_1, Node_t *node_2);
 
 int
-node_CompareSort(const void *node_1, const void *node_2);
+node_p_Compare(Node_t **node_1, Node_t **node_2);
 
 #endif // NODE_H

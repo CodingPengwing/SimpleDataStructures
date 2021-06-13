@@ -43,9 +43,7 @@ node_Swap_Data(Node_t *node_1, Node_t *node_2)
 }
 
 int
-node_CompareSort(const void *node_1, const void *node_2)
+node_p_Compare(Node_t **node_1, Node_t **node_2)
 {
-    Node_t **n1 = (Node_t**) node_1;
-    Node_t **n2 = (Node_t**) node_2;
-    return data_Compare((*n1)->data, (*n2)->data);
+    return node_Compare(*node_1, *node_2);
 }

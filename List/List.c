@@ -194,51 +194,40 @@ list_Reverse(List_t *list)
     list->bottom = tmp;
 }
 
-// Move all values that are bigger than the pivot to the bottom of the List
-void 
-list_Sift(List_t *list, Data_t *pivot) 
-{
-    if (list->size <= 1) return;
-    Node_t *curr = list->top;
-    Node_t *swap;
-
-    // Remove any Node with value > pivot, insert them at the 
-    // bottom of tmp_list
-    while (curr) 
-    {
-        if (data_Compare(curr->data, pivot) > 0) 
-        {
-            swap = curr->next;
-            // try to find the next node that is <= pivot
-            while (swap)
-            {
-                if (data_Compare(swap->data, pivot) <= 0) break;
-                else swap = swap->next;
-            }
-            // if swap is NULL, there is no more shuffling to be done
-            if (!swap) break;
-            // else swap the data of the 2 nodes
-            node_Swap_Data(curr, swap);
-        } 
-        curr = curr->next;
-    }
-}
-
-// This is a O(n^2) implementation of sorting, the code is quite short but the
-// computation are quite taxing. It might be better to just copy all the elements 
-// into an array, sort them using the standard qsort() function, and then copy back
-// into the List. The user can explore the Array package to see how an array of Data 
-// can be easily created and sorted.
+// Sort the List
 void
 list_Sort(List_t *list)
 {
+    // If List has fewer than 2 elements there's no need to sort
+    if (list->size <= 1) return;
+
+    // Use the sorting functionality of an array to sort a List.
+    // Create an Node array of the same size as our List.
+    Node_t * array[list->size];
+
+    // Fill the Array with the current List components
     Node_t *current = list->top;
-    while (current)
+    for (size_t i = 0; i < list->size; i++)
     {
-        // Move all elements bigger than current Data to bottom of List
-        list_Sift(list, current->data);
+        array[i] = current;
         current = current->next;
     }
+
+    // Sort the nodes
+    qsort(array, list->size, sizeof(*array), node_CompareSort);
+    // qsort(array, length, sizeof(*array), dataArray_Compare);
+
+    // Link the Nodes back together in the new order
+    for (size_t i = 0; i < list->size - 1; i++)
+    {
+        array[i]->next = array[i+1];
+        array[i+1]->prev = array[i];
+    }
+    // Make the start and end NULL.
+    array[0]->prev = array[list->size-1]->next = NULL;
+    // Put the Nodes back into the List
+    list->top = array[0];
+    list->bottom = array[list->size-1];
 }
 
 // Check to see if List contains this Data

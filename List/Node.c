@@ -41,3 +41,11 @@ node_Swap_Data(Node_t *node_1, Node_t *node_2)
     node_1->data = node_2->data;
     node_2->data = tmp_data;
 }
+
+int
+node_CompareSort(const void *node_1, const void *node_2)
+{
+    Node_t **n1 = (Node_t**) node_1;
+    Node_t **n2 = (Node_t**) node_2;
+    return data_Compare((*n1)->data, (*n2)->data);
+}

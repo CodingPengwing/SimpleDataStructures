@@ -213,7 +213,7 @@ list_Sort(List_t *list)
         current = current->next;
     }
 
-    // Sort the nodes
+    // Sort the Nodes
     qsort(array, list->size, sizeof(*array), node_CompareSort);
 
     // Link the Nodes back together in the new order

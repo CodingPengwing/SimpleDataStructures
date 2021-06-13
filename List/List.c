@@ -203,7 +203,7 @@ list_Sort(List_t *list)
 
     // Use the sorting functionality of an array to sort a List.
     // Create an Node array of the same size as our List.
-    Node_t * array[list->size];
+    Node_t* array[list->size];
 
     // Fill the Array with the current List components
     Node_t *current = list->top;
@@ -215,7 +215,6 @@ list_Sort(List_t *list)
 
     // Sort the nodes
     qsort(array, list->size, sizeof(*array), node_CompareSort);
-    // qsort(array, length, sizeof(*array), dataArray_Compare);
 
     // Link the Nodes back together in the new order
     for (size_t i = 0; i < list->size - 1; i++)
